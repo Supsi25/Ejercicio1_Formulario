@@ -6,83 +6,96 @@
         xmlns:local="clr-namespace:Ejercicio1_Formulario"
         mc:Ignorable="d"
         Icon="48.ico"
-        Title="Formulario StackPanel" Height="450" Width="800">
+        Title="Formulario StackPanel" 
+        MinWidth="500"
+        MaxWidth="900">
+
+    <Window.Resources>
+        <!-- Estilo para TextBlock -->
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <!-- Estilo para TextBox -->
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Margin" Value="5,10"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="MinWidth" Value="400"/>
+        </Style>
+
+        <!-- Estilo para TextBox del correo electrónico-->
+        <Style TargetType="{x:Type TextBox}" x:Key="correoTextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="Width" Value="600"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+
+        <!-- Estilo para Button-->
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="Width" Value="100"/>
+        </Style>
+
+        <!-- Estilo con propiedad compleja Nombre -->
+        <Style TargetType="{x:Type StackPanel}" x:Key="nombreDegradado">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="SpringGreen" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Estilo con propiedad compleja Dirección -->
+        <Style TargetType="{x:Type StackPanel}" x:Key="direccionDegradado">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="CornflowerBlue" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Estilo con propiedad compleja Correo -->
+        <Style TargetType="{x:Type StackPanel}" x:Key="correoDegradado">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="PaleVioletRed" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
 
     <StackPanel>
-        <Border
-            Height="80"
-            Margin="10">
-            <Border.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="SpringGreen" Offset="0"/>
-                    <GradientStop Color="White" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.Background>
-            <StackPanel>
-                <TextBlock
-                    Text="Nombre" 
-                    FontWeight="Bold" 
-                    FontSize="16"
-                    Margin="5,10"/>
-                <TextBox
-                    Margin="5"
-                    Height="20"
-                    MinWidth="400"/>
-            </StackPanel>
-        </Border>
-        <Border 
-            Height="80"
-            Margin="10">
-            <Border.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="CornflowerBlue" Offset="0"/>
-                    <GradientStop Color="White" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.Background>
-            <StackPanel>
-                <TextBlock
-                    Text="Dirección" 
-                    FontWeight="Bold" 
-                    FontSize="16"
-                    Margin="5,10"/>
-                <TextBox
-                    Margin="5"
-                    Height="20"
-                    MinWidth="400"/>
-            </StackPanel>
-        </Border>
-        <Border 
-            Height="80"
-            Margin="10">
-            <Border.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="PaleVioletRed" Offset="0"/>
-                    <GradientStop Color="White" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.Background>
-            <StackPanel>
-                <TextBlock
-                    Text="Correo electrónico" 
-                    FontWeight="Bold" 
-                    FontSize="16"
-                    Margin="5,10"/>
-                <TextBox
-                    Margin="5"
-                    Height="20"
-                    MinWidth="400"
-                    Width="500"
-                    HorizontalAlignment="Left"/>
-            </StackPanel>
-        </Border>
-        <StackPanel Orientation="Horizontal">
-            <Button 
-                Margin="0,5"
-                Content="Aceptar"
-                Width="100"/>
-            <Button 
-                Margin="5"          
-                Content="Cancelar"
-                Width="100"/>
+        <StackPanel Style="{StaticResource nombreDegradado}">
+            <TextBlock>Nombre</TextBlock>
+            <TextBox></TextBox>
+        </StackPanel>
+
+        <StackPanel Style="{StaticResource direccionDegradado}">
+            <TextBlock>Dirección</TextBlock>
+            <TextBox></TextBox>
+        </StackPanel>
+
+        <StackPanel Style="{StaticResource correoDegradado}">
+            <TextBlock>Correo electrónico</TextBlock>
+            <TextBox Style="{StaticResource correoTextBox}"></TextBox>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button>Aceptar</Button>
+            <Button Margin="5">Cancelar</Button>
         </StackPanel>
     </StackPanel>
 </Window>
